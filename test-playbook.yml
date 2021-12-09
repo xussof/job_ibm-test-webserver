@@ -1,6 +1,6 @@
 #ansible-playbook test-playbook.yml --extra-vars "ansible_become_pass=sudo_pass app_name=app-name"
 #To run without installing software dependencies
-#ansible-playbook test-playbook.yml --extra-vars "ansible_become_pass=sudo_pass app_name=app-name" --skip-tags "software"
+#ansible-playbook test-playbook.yml --extra-vars "ansible_become_pass=sudo_pass"
 - hosts: dummy
 
   # pre_tasks:
