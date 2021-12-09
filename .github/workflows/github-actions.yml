@@ -1,0 +1,32 @@
+name: Testing ansible-role
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Testing role
+      run: echo "Let's test this role"
+
+    - name: Run playbook
+      uses: dawidd6/action-ansible-playbook@v2
+      with:
+        # Required, playbook filepath
+        playbook: test-playbook.yml
+        # Optional, directory where playbooks live
+        directory: ./
+
+        # Optional, literal inventory file contents
+        inventory: |
+          [dummy]
+          localhost
+
+
