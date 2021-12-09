@@ -16,17 +16,25 @@ jobs:
     - name: Testing role
       run: echo "Let's test this role"
 
-    - name: Run playbook
-      uses: dawidd6/action-ansible-playbook@v2
-      with:
-        # Required, playbook filepath
-        playbook: test-playbook.yml
-        # Optional, directory where playbooks live
-        directory: ./
+    # - name: Run playbook
+    #   uses: dawidd6/action-ansible-playbook@v2
+    #   with:
+    #     # Required, playbook filepath
+    #     playbook: test-playbook.yml
+    #     # Optional, directory where playbooks live
+    #     directory: ./
 
-        # Optional, literal inventory file contents
-        inventory: |
-          [dummy]
-          localhost
+    #     # Optional, literal inventory file contents
+    #     inventory: |
+    #       [dummy]
+    #       localhost
+    #     # Optional, SSH known hosts file content
+    #     known_hosts: .known_hosts
+    
+    - name: Intalling ansible
+      run: apt update && apt install ansible
+
+    - name: Testing role
+      run: ansible-playbook test-playbook-pipeline.yml
 
 

@@ -1,0 +1,15 @@
+#ansible-playbook test-playbook.yml --extra-vars "ansible_become_pass=sudo_pass app_name=app-name"
+#To run without installing software dependencies
+#ansible-playbook test-playbook.yml --extra-vars "ansible_become_pass=sudo_pass"
+- hosts: localhost
+
+  # pre_tasks:
+  #    - raw:  ansible-galaxy role install -r requirements.yml
+
+  vars:
+    app_env: prod
+
+  tasks:
+    - name: Including role to test
+      include_role:
+        name: '../job_ibm-test-webserver'
