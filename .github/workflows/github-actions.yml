@@ -31,10 +31,10 @@ jobs:
     #     # Optional, SSH known hosts file content
     #     known_hosts: .known_hosts
     
-    - name: Intalling ansible
-      run: apt update && apt install ansible
+    # - name: Intalling ansible
+    #   run: apt update && apt install ansible
 
-    - name: Testing role
-      run: ansible-playbook test-playbook-pipeline.yml
+    # - name: Testing role
+    #   run: ansible-playbook test-playbook-pipeline.yml
 
 
