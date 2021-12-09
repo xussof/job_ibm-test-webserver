@@ -1,7 +1,4 @@
----
-
-roles:
-  - src: git@github.com:xussof/service_nginx
-    scm: git
-    version: main
-      name: service_nginx
+- src: git@github.com:xussof/job_ibm-test-webserver
+  scm: git
+  version: main
+  name: job_ibm-test-webserver
