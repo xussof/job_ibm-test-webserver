@@ -54,8 +54,7 @@ galaxy_info:
     #       Maximum 20 tags per role.
 
 dependencies:
-  - src: git@github.com:xussof/job_ibm-test-webserver
+  - src: git@github.com:xussof/service_nginx
     scm: git
     version: main
-    tags: [ never ]
-    name: job_ibm-test-webserver
+    name: service_nginx
