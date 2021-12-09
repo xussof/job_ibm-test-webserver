@@ -4,7 +4,7 @@ server {
   root {{ document_root }}/{{ app_root }};
   index index.html index.htm;
 
-  server_name {{ server_name }};
+  server_name {{ new_hostname }};
 
   location / {
    default_type "text/html";

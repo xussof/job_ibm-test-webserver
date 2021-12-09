@@ -3,15 +3,11 @@
 #ansible-playbook test-playbook.yml --extra-vars "ansible_become_pass=sudo_pass app_name=app-name" --skip-tags "software"
 - hosts: dummy
 
-  pre_tasks:
-     - raw:  ansible-galaxy role install -r requirements.yml
+  # pre_tasks:
+  #    - raw:  ansible-galaxy role install -r requirements.yml
 
   vars:
-    #Vars that need to be defined on command line as --extra-vars
-    #var to chose vars/apps file
-#    app_name: mes-neo
-#    app_env: staging
-#    config_name: "config-name-{{ app_env }}"
+    app_env: prod
 
   tasks:
     - name: Including role to test

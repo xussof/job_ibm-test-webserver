@@ -1,9 +1,26 @@
+- include_vars: "{{ app_env }}.yml"
+
 - name: Hi
   debug:
     msg: "Hi from job ibm nginx"
 
+- name: Apply html template
+  become: true
+  template:
+    src: index.html.j2
+    dest: "{{ document_root }}/{{ app_root }}/index.html"
+  notify: restart nginx
+
 - name: Apply Nginx template
+  become: true
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/sites-available/default
-  notify: Restart Nginx
+  notify: restart nginx
+
+- name: Enable new site
+  file:
+    src: /etc/nginx/sites-available/default
+    dest: /etc/nginx/sites-enabled/default
+    state: link
+  notify: restart nginx
