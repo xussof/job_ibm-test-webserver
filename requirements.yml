@@ -1,0 +1,7 @@
+---
+
+roles:
+  - src: git@github.com:xussof/service_nginx
+    scm: git
+    version: main
+      name: service_nginx

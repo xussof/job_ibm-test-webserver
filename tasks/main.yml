@@ -1,0 +1,9 @@
+- name: Hi
+  debug:
+    msg: "Hi from job ibm nginx"
+
+- name: Apply Nginx template
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: Restart Nginx

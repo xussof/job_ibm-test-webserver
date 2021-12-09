@@ -1,0 +1,30 @@
+#ansible-playbook test-playbook-galaxy.yml --extra-vars "app_env=staging config_name='config-name-{{ app_env }}' app_name=activemq ansible_become_pass=sudo_pass" --skip-tags "software"
+
+- hosts: localhost
+  gather_facts: true
+
+  vars_files:
+    - ../../../../group_vars/all.yml
+
+  tasks:
+    - name: Tempalte mainyml.j2
+      template:
+        src: meta/mainyml.j2
+        dest: meta/main.yml
+
+    - name: Tempalte mainyml.j2
+      template:
+        src: requirementsyml.j2
+        dest: requirements.yml
+
+- hosts: localhost
+
+  pre_tasks:
+     - raw:  ansible-galaxy role install -r requirements.yml
+
+  vars_files: ../../../../group_vars/all.yml
+
+  tasks:
+    - name: Including role to test
+      include_role:
+        name: '../job_ibm-test-webserver'
